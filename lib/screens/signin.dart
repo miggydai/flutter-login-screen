@@ -9,6 +9,7 @@ class SignIn extends StatelessWidget {
         body: Container(
       width: MediaQuery.of(context).size.width,
       color: Colors.green,
+      child: Column(),
     ));
   }
 }
