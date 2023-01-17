@@ -25,7 +25,7 @@ class MyButton extends StatelessWidget {
                 style: BorderStyle.solid,
                 strokeAlign: StrokeAlign.inside)),
             padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(horizontal: 85, vertical: 20)),
+                const EdgeInsets.symmetric(horizontal: 100, vertical: 20)),
             backgroundColor:
                 MaterialStateProperty.all(const Color.fromRGBO(35, 30, 57, 1)),
             foregroundColor: MaterialStateProperty.all(
