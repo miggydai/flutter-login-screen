@@ -12,30 +12,41 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-        onPressed: () {
-          Navigator.pushNamed(context, route);
-        },
-        style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40.0))),
-            side: MaterialStateProperty.all(BorderSide(
-                color: Color(0xFF03bfcb),
-                width: 1.0,
-                style: BorderStyle.solid,
-                strokeAlign: StrokeAlign.inside)),
-            padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(horizontal: 100, vertical: 20)),
-            backgroundColor:
-                MaterialStateProperty.all(const Color.fromRGBO(35, 30, 57, 1)),
-            foregroundColor: MaterialStateProperty.all(
-                const Color.fromRGBO(152, 177, 203, 1)),
-            overlayColor:
-                MaterialStateProperty.all(const Color.fromRGBO(3, 191, 203, 1)),
-            textStyle: MaterialStateProperty.all(const TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontWeight: FontWeight.w300))),
-        child: Text(title));
+    return Container(
+      decoration: new BoxDecoration(
+        gradient: new LinearGradient(
+          colors: [
+            Color.fromRGBO(107, 137, 232, 1),
+            Color.fromRGBO(82, 93, 221, 1)
+          ],
+          begin: FractionalOffset.centerLeft,
+          end: FractionalOffset.centerRight,
+        ),
+        borderRadius: BorderRadius.circular(40),
+      ),
+      child: TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, route);
+          },
+          style: ButtonStyle(
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40.0),
+              )),
+              side: MaterialStateProperty.all(BorderSide(
+                  color: Color.fromRGBO(107, 137, 232, 1),
+                  width: .5,
+                  style: BorderStyle.solid,
+                  strokeAlign: StrokeAlign.inside)),
+              padding: MaterialStateProperty.all(
+                  const EdgeInsets.symmetric(horizontal: 100, vertical: 20)),
+              overlayColor:
+                  MaterialStateProperty.all(Color.fromRGBO(231, 236, 249, 1)),
+              textStyle: MaterialStateProperty.all(
+                  const TextStyle(fontSize: 20, fontWeight: FontWeight.w300))),
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          )),
+    );
   }
 }
