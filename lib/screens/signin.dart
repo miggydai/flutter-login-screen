@@ -18,7 +18,7 @@ class _SignInState extends State<SignIn> {
   Widget build(BuildContext context) {
     return Scaffold(body:
         LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
-      if (constraints.maxWidth > 400) {
+      if (constraints.maxWidth > 500) {
         return WebView(context);
       } else {
         return mobileView(context);
