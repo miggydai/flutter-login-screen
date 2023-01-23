@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_login/widgets/button.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_login/widgets/logo.dart';
 import 'package:flutter_login/widgets/textfield.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -42,65 +43,46 @@ Scaffold WebView(BuildContext context) {
         children: [
           //right side
           Container(
-              width: MediaQuery.of(context).size.width * .5,
-              height: MediaQuery.of(context).size.height,
-              padding: EdgeInsets.symmetric(vertical:10),
-              decoration: new BoxDecoration(
-                gradient: new LinearGradient(
-                  colors: [
-                    Color.fromARGB(255, 117, 148, 248),
-                    Color.fromRGBO(82, 93, 221, 1)
-                  ],
-                  begin: FractionalOffset.topLeft,
-                  end: FractionalOffset.bottomRight,
+            width: MediaQuery.of(context).size.width * .5,
+            height: MediaQuery.of(context).size.height,
+            padding: EdgeInsets.only(top: 120),
+            color: Color.fromRGBO(233, 233, 233, 1),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  constraints: const BoxConstraints(maxHeight: 250),
+                  child: Image.asset("gif.gif"),
                 ),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-
-                children: [
-                  Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * .2,
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.horizontal(
-                        left: Radius.circular(15),
-                        right: Radius.circular(30),
-                      ),
-                      color: Colors.white),
-                  padding: EdgeInsets.only(left: 25),
-                  child:
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      
-                      Icon(
-                          FontAwesomeIcons.airbnb,
-                          size: 50,
-                      ),
-                      AutoSizeText(
+                SizedBox(height: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: AutoSizeText(
                         'Welcome!',
                         style: TextStyle(
-                            fontSize: 30,
-                            color: const Color.fromRGBO(112, 144, 234, 1),
-                            fontWeight: FontWeight.w400),
+                            fontSize: 30, fontWeight: FontWeight.bold),
                         maxLines: 1,
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      AutoSizeText(
-                        'Sign In and get started',
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: AutoSizeText(
+                        'Log in with your data that you entered during your registration',
                         style: TextStyle(fontSize: 15),
                         maxLines: 2,
-                      )
-                    ],
-                  ),
-                ),
-                ],
-              ),
-              ),
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
           //left side
           Container(
             width: MediaQuery.of(context).size.width * .5,
@@ -109,7 +91,8 @@ Scaffold WebView(BuildContext context) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(FontAwesomeIcons.airbnb, size: 100,),
+                Icon(FontAwesomeIcons.airbnb,
+                    size: 100, color: Color.fromRGBO(107, 137, 232, 1)),
                 SizedBox(
                   height: 50,
                 ),
@@ -125,35 +108,15 @@ Scaffold WebView(BuildContext context) {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    // ElevatedButton.icon(onPressed: () {}, icon: Icon(FontAwesomeIcons.facebook, color: Colors.white,), label: Text("")),
-                    Material(
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 12
-                    ,child:TextButton(onPressed: () {}, child: Icon(FontAwesomeIcons.facebook, color: Colors.blue,), style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical:15))
-                    ),)
-                    ),
-                    //  Icon(FontAwesomeIcons.facebook),
+                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.facebook),
                     SizedBox(
                       width: 25,
                     ),
-                    Material(
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 12
-                    ,child:TextButton(onPressed: () {}, child: Icon(FontAwesomeIcons.google, color: Colors.pink,), style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical:15))
-                    ),)
-                    ),
+                    MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google),
                     SizedBox(
                       width: 25,
                     ),
-                     Material(
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 12
-                    ,child:TextButton(onPressed: () {}, child: Icon(FontAwesomeIcons.twitter, color: Colors.blue,), style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical:15))
-                    ),)
-                    )
+                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter)
                   ],
                 ),
                 // SizedBox(height: 100,),
@@ -250,33 +213,16 @@ Scaffold mobileView(BuildContext context) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Material(
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 12
-                    ,child:TextButton(onPressed: () {}, child: Icon(FontAwesomeIcons.facebook, color: Colors.blue,), style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical:15))
-                    ),)
-                    ),
+                      MyLogo(
+                          color: Colors.blue, logo: FontAwesomeIcons.facebook),
                       SizedBox(
                         width: 25,
                       ),
-                     Material(
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 12
-                    ,child:TextButton(onPressed: () {}, child: Icon(FontAwesomeIcons.google, color: Colors.pink,), style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical:15))
-                    ),)
-                    ),
+                      MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google),
                       SizedBox(
                         width: 25,
                       ),
-                     Material(
-                      borderRadius: BorderRadius.circular(8),
-                      elevation: 12
-                    ,child:TextButton(onPressed: () {}, child: Icon(FontAwesomeIcons.twitter, color: Colors.blue,), style: ButtonStyle(
-                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(vertical:15))
-                    ),)
-                    )
+                      MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter)
                     ],
                   ),
 
