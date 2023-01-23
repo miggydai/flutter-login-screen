@@ -44,7 +44,7 @@ Scaffold WebView(BuildContext context) {
           Container(
               width: MediaQuery.of(context).size.width * .5,
               height: MediaQuery.of(context).size.height,
-              padding: EdgeInsets.only(top:120),
+              padding: EdgeInsets.symmetric(vertical:10),
               decoration: new BoxDecoration(
                 gradient: new LinearGradient(
                   colors: [
@@ -56,7 +56,7 @@ Scaffold WebView(BuildContext context) {
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
 
                 children: [
                   Container(
@@ -109,6 +109,7 @@ Scaffold WebView(BuildContext context) {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                Icon(FontAwesomeIcons.airbnb, size: 100,),
                 SizedBox(
                   height: 50,
                 ),
