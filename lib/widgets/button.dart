@@ -26,7 +26,7 @@ class MyButton extends StatelessWidget {
       ),
       child: TextButton(
           onPressed: () {
-            Navigator.pushNamed(context, route);
+            Navigator.pushNamedAndRemoveUntil(context, route, ModalRoute.withName('/'));
           },
           style: ButtonStyle(
               shape: MaterialStateProperty.all(RoundedRectangleBorder(

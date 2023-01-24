@@ -12,8 +12,8 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => HomePage(),
-        '/second': (context) => SignIn(),
-        '/third': (context) => SignUp()
+        '/SignIn': (context) => SignIn(),
+        '/SignUp': (context) => SignUp()
       },
     ));
 
@@ -78,11 +78,11 @@ class HomePage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          MyButton(title: "Sign Up", route: "/third"),
+                          MyButton(title: "Sign Up", route: "/SignUp"),
                           SizedBox(
                             height: 10,
                           ),
-                          MyButton(title: "Sign In", route: "/second"),
+                          MyButton(title: "Sign In", route: "/SignIn"),
                         ],
                       )
                     ],

@@ -99,7 +99,7 @@ Scaffold WebView(BuildContext context) {
                 TField(text: "Email", ob: false),
                 TField(text: "Password", ob: true),
 
-                MyButton(title: "Sign In", route: "/second"),
+                MyButton(title: "Sign In", route: "/SignIn"),
                 SizedBox(
                   height: 15,
                 ),
@@ -124,7 +124,7 @@ Scaffold WebView(BuildContext context) {
                 Container(
                   height: 50,
                 ),
-                MyButton(title: "Sign Up", route: "./third"),
+                MyButton(title: "Sign Up", route: "./SignUp"),
               ],
             ),
           )
@@ -198,7 +198,7 @@ Scaffold mobileView(BuildContext context) {
 
                   TField(text: "Password", ob: true),
 
-                  MyButton(title: "Sign In", route: "./second"),
+                  MyButton(title: "Sign In", route: "./SignIn"),
 
                   SizedBox(
                     height: 15,
@@ -240,7 +240,7 @@ Scaffold mobileView(BuildContext context) {
                     height: 35,
                   ),
 
-                  MyButton(title: "Sign Up", route: "./third")
+                  MyButton(title: "Sign Up", route: "./SignUp")
                 ],
               ),
             ])),
