@@ -1,7 +1,9 @@
 import 'dart:html';
+import 'dart:js';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login/screens/home.dart';
 import 'package:flutter_login/screens/signin.dart';
 import 'package:flutter_login/screens/signup.dart';
 import 'package:flutter_login/widgets/button.dart';
@@ -12,8 +14,9 @@ void main() => runApp(MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
         '/': (context) => HomePage(),
-        '/second': (context) => SignIn(),
-        '/third': (context) => SignUp()
+        '/SignIn': (context) => SignIn(),
+        '/SignUp': (context) => SignUp(),
+        '/Home' : (context) => MyHome(),
       },
     ));
 
@@ -78,11 +81,11 @@ class HomePage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          MyButton(title: "Sign Up", route: "/third"),
+                          MyButton(title: "Sign Up", route: "/SignUp"),
                           SizedBox(
                             height: 10,
                           ),
-                          MyButton(title: "Sign In", route: "/second"),
+                          MyButton(title: "Sign In", route: "/SignIn"),
                         ],
                       )
                     ],

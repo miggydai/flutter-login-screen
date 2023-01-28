@@ -6,7 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class MyLogo extends StatelessWidget {
   final Color color;
   final IconData logo;
-  const MyLogo({Key? key, required this.color, required this.logo})
+  final String route;
+  const MyLogo({Key? key, required this.color, required this.logo, required this.route})
       : super(key: key);
 
   @override
@@ -15,7 +16,9 @@ class MyLogo extends StatelessWidget {
         borderRadius: BorderRadius.circular(8),
         elevation: 12,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () {
+             Navigator.pushNamedAndRemoveUntil(context, route, ModalRoute.withName('/'));
+          },
           child: Icon(
             logo,
             color: color,

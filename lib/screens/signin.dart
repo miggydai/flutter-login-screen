@@ -28,10 +28,6 @@ class _SignInState extends State<SignIn> {
   }
 }
 
-ElevatedButton IconButton(String a) {
-  return ElevatedButton(onPressed: () {}, child: Text(a));
-}
-
 Scaffold WebView(BuildContext context) {
   return Scaffold(
     body: Container(
@@ -99,7 +95,7 @@ Scaffold WebView(BuildContext context) {
                 TField(text: "Email", ob: false),
                 TField(text: "Password", ob: true),
 
-                MyButton(title: "Sign In", route: '/second'),
+                MyButton(title: "Sign In", route: "/SignIn"),
                 SizedBox(
                   height: 15,
                 ),
@@ -108,15 +104,24 @@ Scaffold WebView(BuildContext context) {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.facebook),
+                    MyLogo(
+                        color: Colors.blue,
+                        logo: FontAwesomeIcons.facebook,
+                        route: '/Home'),
                     SizedBox(
                       width: 25,
                     ),
-                    MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google),
+                    MyLogo(
+                        color: Colors.pink,
+                        logo: FontAwesomeIcons.google,
+                        route: '/Home'),
                     SizedBox(
                       width: 25,
                     ),
-                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter)
+                    MyLogo(
+                        color: Colors.blue,
+                        logo: FontAwesomeIcons.twitter,
+                        route: '/Home')
                   ],
                 ),
                 // SizedBox(height: 100,),
@@ -124,7 +129,7 @@ Scaffold WebView(BuildContext context) {
                 Container(
                   height: 50,
                 ),
-                MyButton(title: "Sign Up", route: "./third"),
+                MyButton(title: "Sign Up", route: "./SignUp"),
               ],
             ),
           )
@@ -198,7 +203,7 @@ Scaffold mobileView(BuildContext context) {
 
                   TField(text: "Password", ob: true),
 
-                  MyButton(title: "Sign In", route: "./second"),
+                  MyButton(title: "Sign In", route: "./SignIn"),
 
                   SizedBox(
                     height: 15,
@@ -214,15 +219,23 @@ Scaffold mobileView(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyLogo(
-                          color: Colors.blue, logo: FontAwesomeIcons.facebook),
+                          color: Colors.blue,
+                          logo: FontAwesomeIcons.facebook,
+                          route: '/Home'),
                       SizedBox(
                         width: 25,
                       ),
-                      MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google),
+                      MyLogo(
+                          color: Colors.pink,
+                          logo: FontAwesomeIcons.google,
+                          route: '/Home'),
                       SizedBox(
                         width: 25,
                       ),
-                      MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter)
+                      MyLogo(
+                          color: Colors.blue,
+                          logo: FontAwesomeIcons.twitter,
+                          route: '/Home')
                     ],
                   ),
 
@@ -240,7 +253,7 @@ Scaffold mobileView(BuildContext context) {
                     height: 35,
                   ),
 
-                  MyButton(title: "Sign Up", route: "./third")
+                  MyButton(title: "Sign Up", route: "./SignUp")
                 ],
               ),
             ])),
