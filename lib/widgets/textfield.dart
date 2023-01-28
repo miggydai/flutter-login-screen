@@ -11,7 +11,7 @@ class TField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 35, left: 35, bottom: 25),
+      padding: const EdgeInsets.only(right: 35, left: 35, bottom: 15),
       child: Material(
           elevation: 18,
           shadowColor: Colors.grey[300],
