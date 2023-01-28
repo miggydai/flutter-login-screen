@@ -105,9 +105,14 @@ Scaffold WebView(BuildContext context) {
                     StField(text: "Lastname", ob: false),
                   ],
                 ),
-                TField(text: "Username", ob: true),
-                 TField(text: "Pasword", ob: false),
-                TField(text: "Confirm Password", ob: true),
+                TField(text: "Username", ob: false),
+                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     StField(text: "Pasword", ob: true),
+                StField(text: "Confirm Password", ob: true),
+                   ],
+                 ),
 
                 MyButton(title: "Sign Up", route: "/SignUp"),
                 SizedBox(
