@@ -28,9 +28,6 @@ class _SignInState extends State<SignIn> {
   }
 }
 
-ElevatedButton IconButton(String a) {
-  return ElevatedButton(onPressed: () {}, child: Text(a));
-}
 
 Scaffold WebView(BuildContext context) {
   return Scaffold(
@@ -108,15 +105,15 @@ Scaffold WebView(BuildContext context) {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.facebook),
+                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.facebook, route:'/Home'),
                     SizedBox(
                       width: 25,
                     ),
-                    MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google),
+                    MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google, route:'/Home'),
                     SizedBox(
                       width: 25,
                     ),
-                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter)
+                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter, route:'/Home')
                   ],
                 ),
                 // SizedBox(height: 100,),
@@ -214,15 +211,15 @@ Scaffold mobileView(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyLogo(
-                          color: Colors.blue, logo: FontAwesomeIcons.facebook),
+                          color: Colors.blue, logo: FontAwesomeIcons.facebook, route:'/Home'),
                       SizedBox(
                         width: 25,
                       ),
-                      MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google),
+                      MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google, route:'/Home'),
                       SizedBox(
                         width: 25,
                       ),
-                      MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter)
+                      MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter, route:'/Home')
                     ],
                   ),
 

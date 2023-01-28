@@ -1,7 +1,9 @@
 import 'dart:html';
+import 'dart:js';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_login/screens/home.dart';
 import 'package:flutter_login/screens/signin.dart';
 import 'package:flutter_login/screens/signup.dart';
 import 'package:flutter_login/widgets/button.dart';
@@ -13,7 +15,8 @@ void main() => runApp(MaterialApp(
       routes: {
         '/': (context) => HomePage(),
         '/SignIn': (context) => SignIn(),
-        '/SignUp': (context) => SignUp()
+        '/SignUp': (context) => SignUp(),
+        '/Home' : (context) => MyHome(),
       },
     ));
 
