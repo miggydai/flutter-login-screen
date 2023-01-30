@@ -7,6 +7,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 const backgroundColor = Color.fromRGBO(233, 233, 233, 1);
+const primaryColor = Color.fromRGBO(107, 137, 232, 1);
+const complimentColor = Color.fromRGBO(82, 93, 221, 1);
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -48,7 +50,11 @@ Scaffold WebView(BuildContext context) {
         children: [
           Container(child: MySidebar()),
           Center(
-            child: Icon(FontAwesomeIcons.airbnb),
+            child: Icon(
+              FontAwesomeIcons.airbnb,
+              size: 100,
+              color: primaryColor,
+            ),
           ),
 
           Padding(
@@ -60,7 +66,7 @@ Scaffold WebView(BuildContext context) {
                 child: IconButton(
                     onPressed: () => Scaffold.of(context).openEndDrawer(),
                     icon: Icon(FontAwesomeIcons.userAstronaut,
-                        color: Colors.black)),
+                        color: primaryColor)),
               ),
             ),
           ),
@@ -82,13 +88,13 @@ Scaffold mobileView(BuildContext context) {
       child: MyCard(),
     ),
     appBar: AppBar(
-      title: Text("hello"),
+      backgroundColor: primaryColor,
       actions: [
         Builder(
             builder: (context) => IconButton(
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
                 icon:
-                    Icon(FontAwesomeIcons.userAstronaut, color: Colors.black))),
+                    Icon(FontAwesomeIcons.userAstronaut, color: Colors.white))),
       ],
     ),
     drawer: MySidebar(),
@@ -100,7 +106,8 @@ Scaffold mobileView(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
-            child: Icon(FontAwesomeIcons.airbnb),
+            child:
+                Icon(FontAwesomeIcons.airbnb, size: 100, color: primaryColor),
           ),
         ],
       ),

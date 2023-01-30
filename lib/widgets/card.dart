@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -8,11 +9,11 @@ class MyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        elevation: 50,
+        elevation: 70,
         color: const Color.fromRGBO(35, 30, 57, 1),
         child: Container(
           width: MediaQuery.of(context).size.width * .5,
-          height: MediaQuery.of(context).size.height * .2,
+          height: MediaQuery.of(context).size.height * .7,
           padding: const EdgeInsets.only(top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -63,9 +64,11 @@ class MyCard extends StatelessWidget {
                       ),
                       Wrap(
                         direction: Axis.horizontal,
+                        alignment: WrapAlignment.start,
+                        spacing: 2,
+                        runSpacing: 2,
                         children: [
                           button2("UX/UI"),
-                          button2("Front End Development"),
                           button2("HTML"),
                           button2("CSS"),
                           button2("JavaScript"),
@@ -103,36 +106,33 @@ class MyCard extends StatelessWidget {
                 MaterialStateProperty.all(const Color.fromRGBO(3, 191, 203, 1)),
             textStyle: MaterialStateProperty.all(
                 const TextStyle(fontSize: 11, color: Colors.black))),
-        child: Text(a),
+        child: AutoSizeText(a),
       ),
     );
   }
 
-  Padding button2(String b) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 3, right: 3, bottom: 5),
-      child: TextButton(
-        onPressed: () {},
-        style: ButtonStyle(
-            shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0))),
-            side: MaterialStateProperty.all(BorderSide(
-                color: Color.fromRGBO(152, 177, 203, 1),
-                width: 0.5,
-                style: BorderStyle.solid,
-                strokeAlign: StrokeAlign.inside)),
-            padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(horizontal: 10, vertical: 10)),
-            backgroundColor:
-                MaterialStateProperty.all(const Color.fromRGBO(35, 30, 57, 1)),
-            foregroundColor: MaterialStateProperty.all(
-                const Color.fromRGBO(152, 177, 203, 1)),
-            overlayColor:
-                MaterialStateProperty.all(const Color.fromRGBO(3, 191, 203, 1)),
-            textStyle: MaterialStateProperty.all(
-                const TextStyle(fontSize: 11, color: Colors.black))),
-        child: Text(b),
-      ),
+  TextButton button2(String b) {
+    return TextButton(
+      onPressed: () {},
+      style: ButtonStyle(
+          shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0))),
+          side: MaterialStateProperty.all(BorderSide(
+              color: Color.fromRGBO(152, 177, 203, 1),
+              width: 0.5,
+              style: BorderStyle.solid,
+              strokeAlign: StrokeAlign.inside)),
+          padding: MaterialStateProperty.all(
+              const EdgeInsets.symmetric(horizontal: 10, vertical: 10)),
+          backgroundColor:
+              MaterialStateProperty.all(const Color.fromRGBO(35, 30, 57, 1)),
+          foregroundColor:
+              MaterialStateProperty.all(const Color.fromRGBO(152, 177, 203, 1)),
+          overlayColor:
+              MaterialStateProperty.all(const Color.fromRGBO(3, 191, 203, 1)),
+          textStyle: MaterialStateProperty.all(
+              const TextStyle(fontSize: 11, color: Colors.black))),
+      child: Text(b),
     );
   }
 }

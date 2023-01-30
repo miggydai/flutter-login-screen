@@ -13,7 +13,14 @@ class MySidebar extends StatelessWidget {
       controller: SidebarXController(selectedIndex: 0, extended: true),
       theme: const SidebarXTheme(
         decoration: BoxDecoration(
-            color: Color(0xFF2E2E48),
+            gradient: LinearGradient(
+              colors: [
+                Color.fromRGBO(107, 137, 232, 1),
+                Color.fromARGB(255, 68, 79, 197)
+              ],
+              begin: FractionalOffset.topLeft,
+              end: FractionalOffset.bottomRight,
+            ),
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20),
                 bottomRight: Radius.circular(20))),
