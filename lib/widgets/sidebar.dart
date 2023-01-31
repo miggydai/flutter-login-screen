@@ -25,7 +25,7 @@ class MySidebar extends StatelessWidget {
                 topRight: Radius.circular(20),
                 bottomRight: Radius.circular(20))),
         iconTheme: IconThemeData(color: Colors.white),
-        selectedTextStyle: const TextStyle(color: Colors.white),
+        selectedTextStyle:  TextStyle(color: Colors.white),
       ),
       extendedTheme: const SidebarXTheme(width: 250),
       footerDivider: Divider(color: Colors.white.withOpacity(0.8), height: 1),
@@ -44,7 +44,8 @@ class MySidebar extends StatelessWidget {
           icon: Icons.home,
           label: ' Home',
           onTap: () {
-            Navigator.pushNamed(context, '/Home');
+            Navigator.pushNamedAndRemoveUntil(
+                context, "/Home", ModalRoute.withName('/'));;
           },
         ),
         SidebarXItem(icon: Icons.settings, label: ' Setting'),
@@ -53,7 +54,8 @@ class MySidebar extends StatelessWidget {
             icon: Icons.question_mark,
             label: ' About',
             onTap: (() {
-              Navigator.pushNamed(context, '/About');
+              Navigator.pushNamedAndRemoveUntil(
+                context, "/About", ModalRoute.withName('/Home'));
             })),
       ],
     );

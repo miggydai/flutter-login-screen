@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_login/widgets/button.dart';
 import 'package:flutter_login/widgets/card.dart';
+import 'package:flutter_login/widgets/logo.dart';
 import 'package:flutter_login/widgets/sidebar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -37,9 +39,31 @@ Scaffold WebView(BuildContext context) {
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.only(bottom: 150, left: 30, right: 30),
+      padding: EdgeInsets.only(top:10,left: 30, right: 30),
       color: backgroundColor,
-      child: MyCard(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          MyCard(),
+          SizedBox(height: 150,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                alignment: Alignment.bottomCenter,
+                child:MyLogo(color: Colors.red, logo: FontAwesomeIcons.doorOpen, route: "/")),
+                SizedBox(
+                  width: 5,
+                ),
+                 Align(
+                alignment: Alignment.bottomCenter,
+                child:MyLogo(color: Colors.blueGrey, logo: FontAwesomeIcons.discord, route: "")),
+            ],
+          ),
+          
+        ],
+
+      ),
     ),
     body: Container(
       width: MediaQuery.of(context).size.width,
@@ -56,7 +80,6 @@ Scaffold WebView(BuildContext context) {
               color: primaryColor,
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Builder(
@@ -70,6 +93,7 @@ Scaffold WebView(BuildContext context) {
               ),
             ),
           ),
+          
           // Your app screen body
         ],
       ),
@@ -83,9 +107,18 @@ Scaffold mobileView(BuildContext context) {
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .5,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.only(bottom: 150, left: 30, right: 30),
       color: Colors.blue[50],
-      child: MyCard(),
+      child:  Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          MyCard(),
+          SizedBox(height: 150,),
+          Align(
+            alignment: Alignment.bottomRight,
+            child:MyLogo(color: Colors.red, logo: FontAwesomeIcons.doorOpen, route: "/")),
+        ],
+
+      ),
     ),
     appBar: AppBar(
       backgroundColor: primaryColor,

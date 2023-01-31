@@ -12,8 +12,8 @@ class MyCard extends StatelessWidget {
         elevation: 70,
         color: const Color.fromRGBO(35, 30, 57, 1),
         child: Container(
-          width: MediaQuery.of(context).size.width * .5,
-          height: MediaQuery.of(context).size.height * .7,
+          // width: MediaQuery.of(context).size.width * .5,
+          // height: MediaQuery.of(context).size.height * .7,
           padding: const EdgeInsets.only(top: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

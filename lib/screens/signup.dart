@@ -99,7 +99,7 @@ Scaffold WebView(BuildContext context) {
             
                 TField(text: "Email", ob: false),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     StField(text: "Firstname", ob: false),
                     StField(text: "Lastname", ob: false),
@@ -107,7 +107,7 @@ Scaffold WebView(BuildContext context) {
                 ),
                 TField(text: "Username", ob: false),
                  Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                    children: [
                      StField(text: "Pasword", ob: true),
                 StField(text: "Confirm Password", ob: true),
