@@ -83,11 +83,11 @@ class HomePage extends StatelessWidget {
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          MyButton(title: "Sign Up", route: "/SignUp"),
+                          MyButton(title: "SignUp", route: "/SignUp"),
                           SizedBox(
                             height: 10,
                           ),
-                          MyButton(title: "Sign In", route: "/SignIn"),
+                          MyButton(title: "Login ", route: "/SignIn"),
                         ],
                       )
                     ],

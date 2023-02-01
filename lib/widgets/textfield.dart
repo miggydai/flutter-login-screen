@@ -10,22 +10,25 @@ class TField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 90, left: 90, bottom: 15),
-      child: Material(
-          elevation: 18,
-          shadowColor: Colors.grey[300],
-          borderRadius: BorderRadius.circular(30),
-          child: TextField(
-            obscureText: ob,
-            maxLines: 1,
-            decoration: InputDecoration(
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                labelText: text,
-                fillColor: Colors.white,
-                filled: true),
-          )),
+    return Container(
+      width: 500,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 15),
+        child: Material(
+            elevation: 18,
+            shadowColor: Colors.grey[300],
+            borderRadius: BorderRadius.circular(30),
+            child: TextField(
+              obscureText: ob,
+              maxLines: 1,
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30)),
+                  labelText: text,
+                  fillColor: Colors.white,
+                  filled: true),
+            )),
+      ),
     );
   }
 }

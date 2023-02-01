@@ -16,37 +16,53 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     body:
+    return Scaffold(body:
         LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
       if (constraints.maxWidth > 600) {
         return WebView(context);
       } else {
         return mobileView(context);
       }
-    })
-    );
+    }));
   }
 }
 
 //=============================================Web View==========================================================
-Scaffold WebView (BuildContext context){
+Scaffold WebView(BuildContext context) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.only( left: 30, right: 30),
+      padding: EdgeInsets.only(left: 30, right: 30),
       color: backgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MyCard(),
-          SizedBox(height: 150,),
-          Align(
-            alignment: Alignment.bottomRight,
-            child:MyLogo(color: Colors.red, logo: FontAwesomeIcons.doorOpen, route: "/")),
+          SizedBox(
+            height: 150,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MyLogo(
+                      color: Colors.red,
+                      logo: FontAwesomeIcons.doorOpen,
+                      route: "/")),
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: MyLogo(
+                        color: Colors.blueGrey,
+                        logo: FontAwesomeIcons.discord,
+                        route: "")),
+              ),
+            ],
+          ),
         ],
-
       ),
     ),
     body: Container(
@@ -56,29 +72,27 @@ Scaffold WebView (BuildContext context){
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(child: MySidebar()),
+          Container(child: MySidebar(side: 1)),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
-                        constraints: const BoxConstraints(maxHeight: 250),
-                        child: Image.asset("patrick.jpg"),
-                      ),
-                      Text("1. jdkasjkdjlka"),
-                      SizedBox(height: 5,),
-                      Text("2. jdkasjkdjlka"),
-                      SizedBox(height: 5,),
-                      Text("3. jdkasjkdjlka"),
-                      SizedBox(height: 5,),
-                      Text("4. jdkasjkdjlka"),
-                      SizedBox(height: 5,),
-                      Text("5. jdkasjkdjlka")
-
-                      
-
-               ]
-               ,
+                constraints: const BoxConstraints(maxHeight: 250),
+                child: Image.asset("patrick.jpg"),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 450,
+                height: 250,
+                child: Text(
+                  "My flutter experience so far has been a fun one. Learning flutter was a challenge since im used to coding is javascript but since i've been coding java for along time, I got a hand of it pretty quickly. Learning flutter for the first time and experimenting was very fun and though there were some challenges, overcoming them felt great and moving forward I want to learn flutter more and dive deeper into the rabit hole. ",
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+            ],
           ),
 
           Padding(
@@ -102,9 +116,9 @@ Scaffold WebView (BuildContext context){
 }
 
 //==================================================================Mobile View============================================================
-Scaffold mobileView (BuildContext context) {
+Scaffold mobileView(BuildContext context) {
   return Scaffold(
-     endDrawer: Container(
+    endDrawer: Container(
       width: MediaQuery.of(context).size.width * .5,
       height: MediaQuery.of(context).size.height,
       color: Colors.blue[50],
@@ -112,12 +126,30 @@ Scaffold mobileView (BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MyCard(),
-          SizedBox(height: 150,),
-          Align(
-            alignment: Alignment.bottomRight,
-            child:MyLogo(color: Colors.red, logo: FontAwesomeIcons.doorOpen, route: "/")),
+          SizedBox(
+            height: 150,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MyLogo(
+                      color: Colors.red,
+                      logo: FontAwesomeIcons.doorOpen,
+                      route: "/")),
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: MyLogo(
+                        color: Colors.blueGrey,
+                        logo: FontAwesomeIcons.discord,
+                        route: "")),
+              ),
+            ],
+          ),
         ],
-
       ),
     ),
     appBar: AppBar(
@@ -130,7 +162,7 @@ Scaffold mobileView (BuildContext context) {
                     Icon(FontAwesomeIcons.userAstronaut, color: Colors.white))),
       ],
     ),
-    drawer: MySidebar(),
+    drawer: MySidebar(side: 1),
     body: Container(
       width: MediaQuery.of(context).size.width,
       color: backgroundColor,
@@ -139,13 +171,24 @@ Scaffold mobileView (BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-                Center(
-            child:
-                Text("Picture"),
-          ),
+              Container(
+                constraints: const BoxConstraints(maxHeight: 250),
+                child: Image.asset("patrick.jpg"),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                width: 450,
+                height: 250,
+                child: Text(
+                  "My flutter experience so far has been a fun one. Learning flutter was a challenge since im used to coding is javascript but since i've been coding java for along time, I got a hand of it pretty quickly. Learning flutter for the first time and experimenting was very fun and though there were some challenges, overcoming them felt great and moving forward I want to learn flutter more and dive deeper into the rabit hole. ",
+                  textAlign: TextAlign.justify,
+                ),
+              ),
             ],
           ),
         ],

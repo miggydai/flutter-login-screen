@@ -18,18 +18,16 @@ class SignUp extends StatefulWidget {
 class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
+    return Scaffold(body:
+        LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
       if (constraints.maxWidth > 620) {
         return WebView(context);
       } else {
         return mobileView(context);
       }
-    })
-    );
+    }));
   }
 }
-
 
 Scaffold WebView(BuildContext context) {
   return Scaffold(
@@ -95,8 +93,6 @@ Scaffold WebView(BuildContext context) {
                 SizedBox(
                   height: 50,
                 ),
-                
-            
                 TField(text: "Email", ob: false),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -106,13 +102,13 @@ Scaffold WebView(BuildContext context) {
                   ],
                 ),
                 TField(text: "Username", ob: false),
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                   children: [
-                     StField(text: "Pasword", ob: true),
-                StField(text: "Confirm Password", ob: true),
-                   ],
-                 ),
+                  children: [
+                    StField(text: "Pasword", ob: true),
+                    StField(text: "Confirm Password", ob: true),
+                  ],
+                ),
 
                 MyButton(title: "Sign Up", route: "/SignUp"),
                 SizedBox(
@@ -123,15 +119,24 @@ Scaffold WebView(BuildContext context) {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.facebook, route:'/Home'),
+                    MyLogo(
+                        color: Colors.blue,
+                        logo: FontAwesomeIcons.facebook,
+                        route: '/Home'),
                     SizedBox(
                       width: 25,
                     ),
-                    MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google, route:'/Home'),
+                    MyLogo(
+                        color: Colors.pink,
+                        logo: FontAwesomeIcons.google,
+                        route: '/Home'),
                     SizedBox(
                       width: 25,
                     ),
-                    MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter, route:'/Home')
+                    MyLogo(
+                        color: Colors.blue,
+                        logo: FontAwesomeIcons.twitter,
+                        route: '/Home')
                   ],
                 ),
                 // SizedBox(height: 100,),
@@ -229,15 +234,23 @@ Scaffold mobileView(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyLogo(
-                          color: Colors.blue, logo: FontAwesomeIcons.facebook, route:'/Home'),
+                          color: Colors.blue,
+                          logo: FontAwesomeIcons.facebook,
+                          route: '/Home'),
                       SizedBox(
                         width: 25,
                       ),
-                      MyLogo(color: Colors.pink, logo: FontAwesomeIcons.google, route:'/Home'),
+                      MyLogo(
+                          color: Colors.pink,
+                          logo: FontAwesomeIcons.google,
+                          route: '/Home'),
                       SizedBox(
                         width: 25,
                       ),
-                      MyLogo(color: Colors.blue, logo: FontAwesomeIcons.twitter, route:'/Home')
+                      MyLogo(
+                          color: Colors.blue,
+                          logo: FontAwesomeIcons.twitter,
+                          route: '/Home')
                     ],
                   ),
 

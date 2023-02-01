@@ -39,30 +39,36 @@ Scaffold WebView(BuildContext context) {
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
       height: MediaQuery.of(context).size.height,
-      padding: EdgeInsets.only(top:10,left: 30, right: 30),
+      padding: EdgeInsets.only(top: 10, left: 30, right: 30),
       color: backgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MyCard(),
-          SizedBox(height: 150,),
+          SizedBox(
+            height: 150,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Align(
-                alignment: Alignment.bottomCenter,
-                child:MyLogo(color: Colors.red, logo: FontAwesomeIcons.doorOpen, route: "/")),
-                SizedBox(
-                  width: 5,
-                ),
-                 Align(
-                alignment: Alignment.bottomCenter,
-                child:MyLogo(color: Colors.blueGrey, logo: FontAwesomeIcons.discord, route: "")),
+                  alignment: Alignment.bottomCenter,
+                  child: MyLogo(
+                      color: Colors.red,
+                      logo: FontAwesomeIcons.doorOpen,
+                      route: "/")),
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: MyLogo(
+                        color: Colors.blueGrey,
+                        logo: FontAwesomeIcons.discord,
+                        route: "")),
+              ),
             ],
           ),
-          
         ],
-
       ),
     ),
     body: Container(
@@ -72,7 +78,7 @@ Scaffold WebView(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(child: MySidebar()),
+          Container(child: MySidebar(side: 2)),
           Center(
             child: Icon(
               FontAwesomeIcons.airbnb,
@@ -93,7 +99,7 @@ Scaffold WebView(BuildContext context) {
               ),
             ),
           ),
-          
+
           // Your app screen body
         ],
       ),
@@ -108,16 +114,34 @@ Scaffold mobileView(BuildContext context) {
       width: MediaQuery.of(context).size.width * .5,
       height: MediaQuery.of(context).size.height,
       color: Colors.blue[50],
-      child:  Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MyCard(),
-          SizedBox(height: 150,),
-          Align(
-            alignment: Alignment.bottomRight,
-            child:MyLogo(color: Colors.red, logo: FontAwesomeIcons.doorOpen, route: "/")),
+          SizedBox(
+            height: 150,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: MyLogo(
+                      color: Colors.red,
+                      logo: FontAwesomeIcons.doorOpen,
+                      route: "/")),
+              Padding(
+                padding: const EdgeInsets.only(left: 2),
+                child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: MyLogo(
+                        color: Colors.blueGrey,
+                        logo: FontAwesomeIcons.discord,
+                        route: "")),
+              ),
+            ],
+          ),
         ],
-
       ),
     ),
     appBar: AppBar(
@@ -130,7 +154,7 @@ Scaffold mobileView(BuildContext context) {
                     Icon(FontAwesomeIcons.userAstronaut, color: Colors.white))),
       ],
     ),
-    drawer: MySidebar(),
+    drawer: MySidebar(side: 2),
     body: Container(
       width: MediaQuery.of(context).size.width,
       color: backgroundColor,
