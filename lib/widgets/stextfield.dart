@@ -5,13 +5,14 @@ import 'package:flutter/src/widgets/framework.dart';
 class StField extends StatelessWidget {
   final String text;
   final bool ob;
-  const StField({Key? key, required this.text, required this.ob})
+  final double s;
+  const StField({Key? key, required this.text, required this.ob, required this.s})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 200,
+        width: s,
         padding: const EdgeInsets.only(bottom: 15),
         child: Material(
             elevation: 18,

@@ -92,8 +92,8 @@ Scaffold WebView(BuildContext context) {
                 SizedBox(
                   height: 50,
                 ),
-                TField(text: "Email", ob: false),
-                TField(text: "Password", ob: true),
+                TField(text: "Email", ob: false, s: .4),
+                TField(text: "Password", ob: true, s: .4),
 
                 MyButton(title: "Sign In", route: "/SignIn"),
                 SizedBox(
@@ -107,7 +107,7 @@ Scaffold WebView(BuildContext context) {
                     MyLogo(
                         color: Colors.blue,
                         logo: FontAwesomeIcons.facebook,
-                        route: '/Home'),
+                        route: ''),
                     SizedBox(
                       width: 25,
                     ),
@@ -121,7 +121,7 @@ Scaffold WebView(BuildContext context) {
                     MyLogo(
                         color: Colors.blue,
                         logo: FontAwesomeIcons.twitter,
-                        route: '/Home')
+                        route: '')
                   ],
                 ),
                 // SizedBox(height: 100,),
@@ -198,10 +198,10 @@ Scaffold mobileView(BuildContext context) {
               ),
               Column(
                 children: [
-                  TField(text: "Email", ob: false),
+                  TField(text: "Email", ob: false, s: .7),
                   // ignore: prefer_const_constructors
 
-                  TField(text: "Password", ob: true),
+                  TField(text: "Password", ob: true, s: .7),
 
                   MyButton(title: "Sign In", route: "./SignIn"),
 
@@ -221,7 +221,7 @@ Scaffold mobileView(BuildContext context) {
                       MyLogo(
                           color: Colors.blue,
                           logo: FontAwesomeIcons.facebook,
-                          route: '/Home'),
+                          route: ''),
                       SizedBox(
                         width: 25,
                       ),
@@ -235,7 +235,7 @@ Scaffold mobileView(BuildContext context) {
                       MyLogo(
                           color: Colors.blue,
                           logo: FontAwesomeIcons.twitter,
-                          route: '/Home')
+                          route: '')
                     ],
                   ),
 

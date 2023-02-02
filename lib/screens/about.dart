@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -74,7 +75,7 @@ Scaffold WebView(BuildContext context) {
         children: [
           Container(child: MySidebar(side: 1)),
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -87,7 +88,7 @@ Scaffold WebView(BuildContext context) {
               Container(
                 width: 450,
                 height: 250,
-                child: Text(
+                child: AutoSizeText(
                   "My flutter experience so far has been a fun one. Learning flutter was a challenge since im used to coding is javascript but since i've been coding java for along time, I got a hand of it pretty quickly. Learning flutter for the first time and experimenting was very fun and though there were some challenges, overcoming them felt great and moving forward I want to learn flutter more and dive deeper into the rabit hole. ",
                   textAlign: TextAlign.justify,
                 ),
@@ -171,7 +172,7 @@ Scaffold mobileView(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
@@ -182,11 +183,12 @@ Scaffold mobileView(BuildContext context) {
                 height: 10,
               ),
               Container(
-                width: 450,
+                width: 300,
                 height: 250,
-                child: Text(
+                child: AutoSizeText(
                   "My flutter experience so far has been a fun one. Learning flutter was a challenge since im used to coding is javascript but since i've been coding java for along time, I got a hand of it pretty quickly. Learning flutter for the first time and experimenting was very fun and though there were some challenges, overcoming them felt great and moving forward I want to learn flutter more and dive deeper into the rabit hole. ",
                   textAlign: TextAlign.justify,
+                  
                 ),
               ),
             ],

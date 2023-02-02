@@ -93,20 +93,20 @@ Scaffold WebView(BuildContext context) {
                 SizedBox(
                   height: 50,
                 ),
-                TField(text: "Email", ob: false),
+                TField(text: "Email", ob: false, s: .3),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    StField(text: "Firstname", ob: false),
-                    StField(text: "Lastname", ob: false),
+                    StField(text: "Firstname", ob: false, s: 200),
+                    StField(text: "Lastname", ob: false, s: 200),
                   ],
                 ),
-                TField(text: "Username", ob: false),
+                TField(text: "Username", ob: false, s: .3),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    StField(text: "Pasword", ob: true),
-                    StField(text: "Confirm Password", ob: true),
+                    StField(text: "Pasword", ob: true, s: 200),
+                    StField(text: "Confirm Password", ob: true, s: 200),
                   ],
                 ),
 
@@ -122,7 +122,7 @@ Scaffold WebView(BuildContext context) {
                     MyLogo(
                         color: Colors.blue,
                         logo: FontAwesomeIcons.facebook,
-                        route: '/Home'),
+                        route: ''),
                     SizedBox(
                       width: 25,
                     ),
@@ -136,7 +136,7 @@ Scaffold WebView(BuildContext context) {
                     MyLogo(
                         color: Colors.blue,
                         logo: FontAwesomeIcons.twitter,
-                        route: '/Home')
+                        route: '')
                   ],
                 ),
                 // SizedBox(height: 100,),
@@ -213,10 +213,22 @@ Scaffold mobileView(BuildContext context) {
               ),
               Column(
                 children: [
-                  TField(text: "Email", ob: false),
-                  // ignore: prefer_const_constructors
-
-                  TField(text: "Password", ob: true),
+                  TField(text: "Email", ob: false, s: .7),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    StField(text: "Firstname", ob: false, s: 100),
+                    StField(text: "Lastname", ob: false, s: 100),
+                  ],
+                ),
+                TField(text: "Username", ob: false, s: .7),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    StField(text: "Pasword", ob: true, s: 100),
+                    StField(text: "Confirm Password", ob: true, s: 100),
+                  ],
+                ),
 
                   MyButton(title: "Sign Up", route: "./SignUp"),
 
@@ -236,7 +248,7 @@ Scaffold mobileView(BuildContext context) {
                       MyLogo(
                           color: Colors.blue,
                           logo: FontAwesomeIcons.facebook,
-                          route: '/Home'),
+                          route: ''),
                       SizedBox(
                         width: 25,
                       ),
@@ -250,7 +262,7 @@ Scaffold mobileView(BuildContext context) {
                       MyLogo(
                           color: Colors.blue,
                           logo: FontAwesomeIcons.twitter,
-                          route: '/Home')
+                          route: '')
                     ],
                   ),
 

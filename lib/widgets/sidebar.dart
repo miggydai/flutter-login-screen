@@ -18,7 +18,7 @@ class MySidebar extends StatelessWidget {
 
 SidebarX sidebar1(BuildContext context) {
   return SidebarX(
-    controller: SidebarXController(selectedIndex: 0, extended: true),
+    controller: SidebarXController(selectedIndex: 3, extended: true),
     theme: const SidebarXTheme(
       decoration: BoxDecoration(
           gradient: LinearGradient(

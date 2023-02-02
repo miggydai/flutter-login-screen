@@ -5,13 +5,14 @@ import 'package:flutter/src/widgets/framework.dart';
 class TField extends StatelessWidget {
   final String text;
   final bool ob;
-  const TField({Key? key, required this.text, required this.ob})
+  final double s;
+  const TField({Key? key, required this.text, required this.ob, required this.s})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 500,
+      width: MediaQuery.of(context).size.width * s,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 15),
         child: Material(
