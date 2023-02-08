@@ -7,6 +7,7 @@ import 'package:flutter_login/widgets/logo.dart';
 import 'package:flutter_login/widgets/sidebar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sidebarx/sidebarx.dart';
+import 'package:http/http.dart';
 
 const backgroundColor = Color.fromRGBO(233, 233, 233, 1);
 const primaryColor = Color.fromRGBO(107, 137, 232, 1);
@@ -20,6 +21,18 @@ class MyHome extends StatefulWidget {
 }
 
 class _MyHomeState extends State<MyHome> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getRandomData();
+  }
+
+  Future<void> getRandomData() async {
+    // Response response = await get(Uri.https('randomuser.me/api/'));
+    // print(response);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(body:
@@ -41,34 +54,37 @@ Scaffold WebView(BuildContext context) {
       height: MediaQuery.of(context).size.height,
       padding: EdgeInsets.only(top: 10, left: 30, right: 30),
       color: backgroundColor,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          MyCard(),
-          SizedBox(
-            height: 150,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: MyLogo(
-                      color: Colors.red,
-                      logo: FontAwesomeIcons.doorOpen,
-                      route: "/")),
-              Padding(
-                padding: const EdgeInsets.only(left: 2),
-                child: Align(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Wrap(children: [MyCard()]),
+            SizedBox(
+              height: 150,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
                     alignment: Alignment.bottomCenter,
                     child: MyLogo(
-                        color: Colors.blueGrey,
-                        logo: FontAwesomeIcons.discord,
-                        route: "")),
-              ),
-            ],
-          ),
-        ],
+                        color: Colors.red,
+                        logo: FontAwesomeIcons.doorOpen,
+                        route: "/")),
+                Padding(
+                  padding: const EdgeInsets.only(left: 2),
+                  child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: MyLogo(
+                          color: Colors.blueGrey,
+                          logo: FontAwesomeIcons.discord,
+                          route: "")),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     ),
     body: Container(
@@ -114,34 +130,37 @@ Scaffold mobileView(BuildContext context) {
       width: MediaQuery.of(context).size.width * .5,
       height: MediaQuery.of(context).size.height,
       color: Colors.blue[50],
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          MyCard(),
-          SizedBox(
-            height: 150,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: MyLogo(
-                      color: Colors.red,
-                      logo: FontAwesomeIcons.doorOpen,
-                      route: "/")),
-              Padding(
-                padding: const EdgeInsets.only(left: 2),
-                child: Align(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Wrap(children: [MyCard()]),
+            SizedBox(
+              height: 150,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Align(
                     alignment: Alignment.bottomCenter,
                     child: MyLogo(
-                        color: Colors.blueGrey,
-                        logo: FontAwesomeIcons.discord,
-                        route: "")),
-              ),
-            ],
-          ),
-        ],
+                        color: Colors.red,
+                        logo: FontAwesomeIcons.doorOpen,
+                        route: "/")),
+                Padding(
+                  padding: const EdgeInsets.only(left: 2),
+                  child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: MyLogo(
+                          color: Colors.blueGrey,
+                          logo: FontAwesomeIcons.discord,
+                          route: "")),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     ),
     appBar: AppBar(
