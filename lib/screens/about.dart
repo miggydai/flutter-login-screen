@@ -39,7 +39,7 @@ Scaffold WebView(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          MyCard(),
+          MyCard(name: 'migss'),
           SizedBox(
             height: 150,
           ),
@@ -126,7 +126,7 @@ Scaffold mobileView(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          MyCard(),
+          MyCard(name: 'migs'),
           SizedBox(
             height: 150,
           ),

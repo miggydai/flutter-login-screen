@@ -85,9 +85,7 @@ Scaffold WebView(BuildContext context) {
             width: MediaQuery.of(context).size.width * .5,
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(
+            child:  Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(FontAwesomeIcons.airbnb,
@@ -150,7 +148,6 @@ Scaffold WebView(BuildContext context) {
                 ],
               ),
             ),
-          )
         ],
       ),
     ),

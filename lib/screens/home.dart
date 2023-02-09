@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -15,22 +17,38 @@ const complimentColor = Color.fromRGBO(82, 93, 221, 1);
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
+  
 
   @override
   State<MyHome> createState() => _MyHomeState();
 }
 
 class _MyHomeState extends State<MyHome> {
+   late String firstName;
+
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getRandomData();
+
+    getRandomData().then((value) {  
+    var jsonData = jsonDecode(value.body);
+    print(jsonData['results'][0]['name']['first']);
+    setState(() {
+      firstName = jsonData['results'][0]['name']['first'];
+    });
+    // name = jsonData['results'][0]['name']['first'];
+      // Map data = jsonDecode(value.body);
+      // print(data['results']['0']['gender']);
+      
+    });
   }
 
-  Future<void> getRandomData() async {
-    // Response response = await get(Uri.https('randomuser.me/api/'));
-    // print(response);
+  Future<Response> getRandomData() async {
+    Response response = await get(Uri.https('randomuser.me', '/api/'));
+    // Response response = await get(Uri.https('https://randomuser.me/api/'));
+    return response;
   }
 
   @override
@@ -38,7 +56,7 @@ class _MyHomeState extends State<MyHome> {
     return Scaffold(body:
         LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
       if (constraints.maxWidth > 600) {
-        return WebView(context);
+        return WebView(context, firstName);
       } else {
         return mobileView(context);
       }
@@ -47,7 +65,7 @@ class _MyHomeState extends State<MyHome> {
 }
 
 //=============================================Web View==========================================================
-Scaffold WebView(BuildContext context) {
+Scaffold WebView(BuildContext context, String name) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
@@ -59,7 +77,7 @@ Scaffold WebView(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Wrap(children: [MyCard()]),
+            Wrap(children: [MyCard(name: name != null ? name : 'bogo')]),
             SizedBox(
               height: 150,
             ),
@@ -135,7 +153,7 @@ Scaffold mobileView(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Wrap(children: [MyCard()]),
+            Wrap(children: [MyCard(name: 'migsss')]),
             SizedBox(
               height: 150,
             ),

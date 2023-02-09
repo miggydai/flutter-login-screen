@@ -5,6 +5,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:http/http.dart';
 
 class MyCard extends StatelessWidget {
+  final String name ;
+  const MyCard({Key? key, required this.name}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,7 +27,7 @@ class MyCard extends StatelessWidget {
                 foregroundImage: AssetImage("assets/migs1.jpg"),
               ),
               const SizedBox(height: 15),
-              const Text("Miguel Dailisan",
+               Text(name,
                   style: TextStyle(
                       fontSize: 20,
                       color: const Color.fromRGBO(152, 177, 203, 1))),
