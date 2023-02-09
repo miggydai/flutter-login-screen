@@ -39,7 +39,10 @@ Scaffold WebView(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          MyCard(name: 'migss'),
+          MyCard(
+              name: 'migss',
+              pic:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU"),
           SizedBox(
             height: 150,
           ),
@@ -126,7 +129,10 @@ Scaffold mobileView(BuildContext context) {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          MyCard(name: 'migs'),
+          MyCard(
+              name: 'migs',
+              pic:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU"),
           SizedBox(
             height: 150,
           ),
@@ -188,7 +194,6 @@ Scaffold mobileView(BuildContext context) {
                 child: AutoSizeText(
                   "My flutter experience so far has been a fun one. Learning flutter was a challenge since im used to coding is javascript but since i've been coding java for along time, I got a hand of it pretty quickly. Learning flutter for the first time and experimenting was very fun and though there were some challenges, overcoming them felt great and moving forward I want to learn flutter more and dive deeper into the rabit hole. ",
                   textAlign: TextAlign.justify,
-                  
                 ),
               ),
             ],

@@ -6,7 +6,8 @@ class StField extends StatelessWidget {
   final String text;
   final bool ob;
   final double s;
-  const StField({Key? key, required this.text, required this.ob, required this.s})
+  const StField(
+      {Key? key, required this.text, required this.ob, required this.s})
       : super(key: key);
 
   @override

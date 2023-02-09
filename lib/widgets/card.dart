@@ -5,8 +5,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:http/http.dart';
 
 class MyCard extends StatelessWidget {
-  final String name ;
-  const MyCard({Key? key, required this.name}) : super(key: key);
+  final String name;
+  final String pic;
+  const MyCard({Key? key, required this.name, required this.pic})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +23,13 @@ class MyCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 50,
                 backgroundColor: Colors.red,
-                foregroundImage: AssetImage("assets/migs1.jpg"),
+                foregroundImage: NetworkImage(pic),
               ),
               const SizedBox(height: 15),
-               Text(name,
+              Text(name,
                   style: TextStyle(
                       fontSize: 20,
                       color: const Color.fromRGBO(152, 177, 203, 1))),

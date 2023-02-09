@@ -17,31 +17,34 @@ const complimentColor = Color.fromRGBO(82, 93, 221, 1);
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
-  
 
   @override
   State<MyHome> createState() => _MyHomeState();
 }
 
 class _MyHomeState extends State<MyHome> {
-   late String firstName;
-
+  String fullName = "";
+  String picture = "";
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
-    getRandomData().then((value) {  
-    var jsonData = jsonDecode(value.body);
-    print(jsonData['results'][0]['name']['first']);
-    setState(() {
-      firstName = jsonData['results'][0]['name']['first'];
-    });
-    // name = jsonData['results'][0]['name']['first'];
+    getRandomData().then((value) {
+      var jsonData = jsonDecode(value.body);
+      print(jsonData['results'][0]['name']['first']);
+      print(jsonData['results'][0]);
+      print(jsonData['results'][0]['picture']['thumbnail']);
+      setState(() {
+        fullName = jsonData['results'][0]['name']['first'] +
+            " " +
+            jsonData['results'][0]['name']['last'];
+        picture = jsonData['results'][0]['picture']['medium'];
+      });
+      // name = jsonData['results'][0]['name']['first'];
       // Map data = jsonDecode(value.body);
       // print(data['results']['0']['gender']);
-      
     });
   }
 
@@ -53,19 +56,22 @@ class _MyHomeState extends State<MyHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body:
-        LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
-      if (constraints.maxWidth > 600) {
-        return WebView(context, firstName);
-      } else {
-        return mobileView(context);
-      }
-    }));
+    return Scaffold(
+        body: fullName != null
+            ? LayoutBuilder(
+                builder: (BuildContext, BoxConstraints constraints) {
+                if (constraints.maxWidth > 600) {
+                  return WebView(context, fullName, picture);
+                } else {
+                  return mobileView(context);
+                }
+              })
+            : Text("waits"));
   }
 }
 
 //=============================================Web View==========================================================
-Scaffold WebView(BuildContext context, String name) {
+Scaffold WebView(BuildContext context, String name, String pic) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
@@ -77,7 +83,9 @@ Scaffold WebView(BuildContext context, String name) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Wrap(children: [MyCard(name: name != null ? name : 'bogo')]),
+            Wrap(children: [
+              MyCard(name: name != null ? name : 'bogo', pic: pic)
+            ]),
             SizedBox(
               height: 150,
             ),
@@ -153,7 +161,12 @@ Scaffold mobileView(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Wrap(children: [MyCard(name: 'migsss')]),
+            Wrap(children: [
+              MyCard(
+                  name: 'migsss',
+                  pic:
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU")
+            ]),
             SizedBox(
               height: 150,
             ),
