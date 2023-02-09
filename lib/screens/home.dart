@@ -25,6 +25,7 @@ class MyHome extends StatefulWidget {
 class _MyHomeState extends State<MyHome> {
   String fullName = "";
   String picture = "";
+  String loc = "";
 
   @override
   void initState() {
@@ -33,14 +34,13 @@ class _MyHomeState extends State<MyHome> {
 
     getRandomData().then((value) {
       var jsonData = jsonDecode(value.body);
-      print(jsonData['results'][0]['name']['first']);
-      print(jsonData['results'][0]);
-      print(jsonData['results'][0]['picture']['thumbnail']);
+      print(jsonData['results']);
       setState(() {
         fullName = jsonData['results'][0]['name']['first'] +
             " " +
-            jsonData['results'][0]['name']['last'];
-        picture = jsonData['results'][0]['picture']['medium'];
+            jsonData['results'][0]['name']['last']; //getname
+        picture = jsonData['results'][0]['picture']['medium']; //get picture
+        loc = jsonData['results'][0]['location']['country'];
       });
       // name = jsonData['results'][0]['name']['first'];
       // Map data = jsonDecode(value.body);
@@ -61,7 +61,7 @@ class _MyHomeState extends State<MyHome> {
             ? LayoutBuilder(
                 builder: (BuildContext, BoxConstraints constraints) {
                 if (constraints.maxWidth > 600) {
-                  return WebView(context, fullName, picture);
+                  return WebView(context, fullName, picture, loc);
                 } else {
                   return mobileView(context);
                 }
@@ -71,7 +71,7 @@ class _MyHomeState extends State<MyHome> {
 }
 
 //=============================================Web View==========================================================
-Scaffold WebView(BuildContext context, String name, String pic) {
+Scaffold WebView(BuildContext context, String name, String pic, String loc) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
@@ -84,7 +84,7 @@ Scaffold WebView(BuildContext context, String name, String pic) {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Wrap(children: [
-              MyCard(name: name != null ? name : 'bogo', pic: pic)
+              MyCard(name: name != null ? name : 'bogo', pic: pic, loc: loc)
             ]),
             SizedBox(
               height: 150,
@@ -165,7 +165,8 @@ Scaffold mobileView(BuildContext context) {
               MyCard(
                   name: 'migsss',
                   pic:
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU")
+                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU",
+                  loc: "Davao")
             ]),
             SizedBox(
               height: 150,

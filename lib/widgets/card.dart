@@ -7,7 +7,9 @@ import 'package:http/http.dart';
 class MyCard extends StatelessWidget {
   final String name;
   final String pic;
-  const MyCard({Key? key, required this.name, required this.pic})
+  final String loc;
+  const MyCard(
+      {Key? key, required this.name, required this.pic, required this.loc})
       : super(key: key);
 
   @override
@@ -33,7 +35,7 @@ class MyCard extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20,
                       color: const Color.fromRGBO(152, 177, 203, 1))),
-              const Text("DAVAO CITY",
+              Text(loc,
                   style: TextStyle(
                       fontSize: 13,
                       color: const Color.fromRGBO(152, 177, 203, 1))),

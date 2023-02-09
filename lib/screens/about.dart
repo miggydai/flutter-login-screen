@@ -42,7 +42,8 @@ Scaffold WebView(BuildContext context) {
           MyCard(
               name: 'migss',
               pic:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU"),
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU",
+              loc: "Davao"),
           SizedBox(
             height: 150,
           ),
@@ -132,7 +133,8 @@ Scaffold mobileView(BuildContext context) {
           MyCard(
               name: 'migs',
               pic:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU"),
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU",
+              loc: "Davao"),
           SizedBox(
             height: 150,
           ),
