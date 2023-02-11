@@ -34,23 +34,19 @@ class _MyHomeState extends State<MyHome> {
 
     getRandomData().then((value) {
       var jsonData = jsonDecode(value.body);
-      print(jsonData['results']);
+      // print(jsonData['results']);
       setState(() {
         fullName = jsonData['results'][0]['name']['first'] +
             " " +
             jsonData['results'][0]['name']['last']; //getname
         picture = jsonData['results'][0]['picture']['medium']; //get picture
-        loc = jsonData['results'][0]['location']['country'];
+        loc = jsonData['results'][0]['location']['country']; //get coutry
       });
-      // name = jsonData['results'][0]['name']['first'];
-      // Map data = jsonDecode(value.body);
-      // print(data['results']['0']['gender']);
     });
   }
 
   Future<Response> getRandomData() async {
     Response response = await get(Uri.https('randomuser.me', '/api/'));
-    // Response response = await get(Uri.https('https://randomuser.me/api/'));
     return response;
   }
 
@@ -63,10 +59,10 @@ class _MyHomeState extends State<MyHome> {
                 if (constraints.maxWidth > 600) {
                   return WebView(context, fullName, picture, loc);
                 } else {
-                  return mobileView(context);
+                  return mobileView(context, fullName, picture, loc);
                 }
               })
-            : Text("waits"));
+            : Text("oh no"));
   }
 }
 
@@ -150,7 +146,7 @@ Scaffold WebView(BuildContext context, String name, String pic, String loc) {
 }
 
 //==================================================================Mobile View============================================================
-Scaffold mobileView(BuildContext context) {
+Scaffold mobileView(BuildContext context, String name, String pic, String loc) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .5,
@@ -161,13 +157,7 @@ Scaffold mobileView(BuildContext context) {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Wrap(children: [
-              MyCard(
-                  name: 'migsss',
-                  pic:
-                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU",
-                  loc: "Davao")
-            ]),
+            Wrap(children: [MyCard(name: name, pic: pic, loc: loc)]),
             SizedBox(
               height: 150,
             ),
