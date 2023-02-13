@@ -39,7 +39,7 @@ dependencies:
   font_awesome_flutter: ^10.3.0
   sidebar: ^0.0.1
   sidebarx: ^0.14.0
-  http: ^0.13.5
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +67,7 @@ flutter:
     - assets/gif.gif
     - assets/migs1.jpg
     - assets/patrick.jpg
+    - assets/ahh.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_login/widgets/button.dart';
 import 'package:flutter_login/widgets/card.dart';
 import 'package:flutter_login/widgets/logo.dart';
+import 'package:flutter_login/widgets/products.dart';
 import 'package:flutter_login/widgets/sidebar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -26,6 +27,9 @@ class _MyHomeState extends State<MyHome> {
   String fullName = "";
   String picture = "";
   String loc = "";
+  double len = 0;
+  String meal = "";
+  List data = [];
 
   @override
   void initState() {
@@ -43,11 +47,34 @@ class _MyHomeState extends State<MyHome> {
         loc = jsonData['results'][0]['location']['country']; //get coutry
       });
     });
+    getFood();
+
+    // getFood().then((value) {
+    //   var data = jsonDecode(value.body);
+    //   print(data['meals'][0]['strMeal']);
+
+    //   setState(() {
+    //     len = data["meals"].length;
+    //     meal = data['meals'][0]['strMeal'];
+    //   });
+    // });
   }
 
   Future<Response> getRandomData() async {
-    Response response = await get(Uri.https('randomuser.me', '/api/'));
+    Response response = await get(Uri.parse('https://randomuser.me/api/'));
     return response;
+  }
+
+  void getFood() async {
+    Response response = await get(Uri.parse(
+        'https://www.themealdb.com/api/json/v1/1/filter.php?a=Indian'));
+    if (response.statusCode == 200) {
+      setState(() {
+        data = json.decode(response.body)["meals"];
+      });
+    } else {
+      throw Exception("Failed to Load");
+    }
   }
 
   @override
@@ -57,7 +84,7 @@ class _MyHomeState extends State<MyHome> {
             ? LayoutBuilder(
                 builder: (BuildContext, BoxConstraints constraints) {
                 if (constraints.maxWidth > 600) {
-                  return WebView(context, fullName, picture, loc);
+                  return WebView(context, fullName, picture, loc, data);
                 } else {
                   return mobileView(context, fullName, picture, loc);
                 }
@@ -67,8 +94,10 @@ class _MyHomeState extends State<MyHome> {
 }
 
 //=============================================Web View==========================================================
-Scaffold WebView(BuildContext context, String name, String pic, String loc) {
+Scaffold WebView(
+    BuildContext context, String name, String pic, String loc, List data) {
   return Scaffold(
+    floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
       height: MediaQuery.of(context).size.height,
@@ -117,23 +146,26 @@ Scaffold WebView(BuildContext context, String name, String pic, String loc) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(child: MySidebar(side: 2)),
-          Center(
-            child: Icon(
-              FontAwesomeIcons.airbnb,
-              size: 100,
-              color: primaryColor,
-            ),
-          ),
+          Container(
+              width: MediaQuery.of(context).size.width * .6,
+              height: MediaQuery.of(context).size.height,
+              child: data != null
+                  ? ListView.builder(
+                      itemCount: data.length,
+                      itemBuilder: ((context, index) {
+                        return ProdCard(name: data[index]['strMeal']);
+                      }))
+                  : Center(
+                      child: CircularProgressIndicator(),
+                    )),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Builder(
-              builder: (context) => Material(
-                borderRadius: BorderRadius.circular(8),
-                elevation: 12,
-                child: IconButton(
-                    onPressed: () => Scaffold.of(context).openEndDrawer(),
-                    icon: Icon(FontAwesomeIcons.userAstronaut,
-                        color: primaryColor)),
+              builder: (context) => FloatingActionButton(
+                onPressed: () => Scaffold.of(context).openEndDrawer(),
+                backgroundColor: primaryColor,
+                child: Icon(FontAwesomeIcons.userAstronaut,
+                    color: backgroundColor),
               ),
             ),
           ),
