@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ProdCard extends StatelessWidget {
   final String name;
-  const ProdCard({Key? key, required this.name}) : super(key: key);
+  final String pic;
+  const ProdCard({Key? key, required this.name, required this.pic,}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 200,
-      height: 200,
+      width: MediaQuery.of(context).size.width *.15,
+      height: 300,
       child: Card(
         elevation: 70,
         shape: RoundedRectangleBorder(
@@ -23,8 +25,8 @@ class ProdCard extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .2,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/ahh.png'),
-                    fit: BoxFit.fill,
+                    image: NetworkImage(pic),
+                    fit: BoxFit.cover,
                   ),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10),
@@ -33,10 +35,15 @@ class ProdCard extends StatelessWidget {
             SizedBox(
               height: 5,
             ),
-            Text(
-              name,
-            ),
-            Text("price"),
+             Padding(
+               padding: const EdgeInsets.all(8.0),
+               child: Text(
+                  name, textAlign: TextAlign.center,
+                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15)
+                ),
+             ),
+
+            ElevatedButton.icon(onPressed: () {}, icon: Icon(FontAwesomeIcons.cartShopping, size: 15,), label: Text("add to cart", style: TextStyle(fontWeight: FontWeight.w500 ),), style: ElevatedButton.styleFrom(primary: Color.fromRGBO(107, 137, 232, 1)),)
           ],
         ),
       ),
