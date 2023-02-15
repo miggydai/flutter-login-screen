@@ -8,12 +8,13 @@ class MyCard extends StatelessWidget {
   final String name;
   final String pic;
   final String loc;
-  const MyCard(
+   MyCard(
       {Key? key, required this.name, required this.pic, required this.loc})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(this.pic);
     return Card(
         elevation: 70,
         color: const Color.fromRGBO(35, 30, 57, 1),
@@ -28,7 +29,7 @@ class MyCard extends StatelessWidget {
               CircleAvatar(
                 radius: 50,
                 backgroundColor: Colors.red,
-                foregroundImage: NetworkImage(pic),
+                foregroundImage: Image.network(pic,).image, //NetworkImage(pic, scale: 2),
               ),
               const SizedBox(height: 15),
               Text(name,

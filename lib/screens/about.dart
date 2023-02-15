@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -7,29 +9,64 @@ import 'package:sidebarx/sidebarx.dart';
 import 'package:flutter_login/widgets/card.dart';
 import 'package:flutter_login/widgets/sidebar.dart';
 import 'package:flutter_login/widgets/logo.dart';
+import 'package:http/http.dart';
 
 const backgroundColor = Color.fromRGBO(233, 233, 233, 1);
 const primaryColor = Color.fromRGBO(107, 137, 232, 1);
 const complimentColor = Color.fromRGBO(82, 93, 221, 1);
 
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
+
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
+  String fullName = "";
+  String picture = "";
+  String loc = "";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    getRandomData().then((value) {
+      var jsonData = jsonDecode(value.body);
+      // print(jsonData['results']);
+      setState(() {
+        fullName = jsonData['results'][0]['name']['first'] +
+            " " +
+            jsonData['results'][0]['name']['last']; //getname
+        picture = jsonData['results'][0]['picture']['medium']; //get picture
+        loc = jsonData['results'][0]['location']['country']; //get coutry
+        
+      });
+    });
+  }
+
+
+  Future<Response> getRandomData() async {
+    Response response = await get(Uri.parse('https://randomuser.me/api/'));
+    return response;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(body:
         LayoutBuilder(builder: (BuildContext, BoxConstraints constraints) {
       if (constraints.maxWidth > 600) {
-        return WebView(context);
+        return WebView(context, fullName, picture, loc);
       } else {
-        return mobileView(context);
+        return mobileView(context, fullName, picture, loc);
       }
     }));
   }
 }
 
 //=============================================Web View==========================================================
-Scaffold WebView(BuildContext context) {
+Scaffold WebView(BuildContext context, String name, String pic, String loc) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .3,
@@ -40,10 +77,10 @@ Scaffold WebView(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MyCard(
-              name: 'migss',
+              name: name,
               pic:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU",
-              loc: "Davao"),
+                  pic,
+              loc: loc),
           SizedBox(
             height: 150,
           ),
@@ -108,8 +145,8 @@ Scaffold WebView(BuildContext context) {
                 elevation: 12,
                 child: IconButton(
                     onPressed: () => Scaffold.of(context).openEndDrawer(),
-                    icon: Icon(FontAwesomeIcons.userAstronaut,
-                        color: primaryColor)),
+                    icon: CircleAvatar(foregroundImage: NetworkImage(pic)) 
+                    ),
               ),
             ),
           ),
@@ -121,7 +158,7 @@ Scaffold WebView(BuildContext context) {
 }
 
 //==================================================================Mobile View============================================================
-Scaffold mobileView(BuildContext context) {
+Scaffold mobileView(BuildContext context, String name, String pic, String loc) {
   return Scaffold(
     endDrawer: Container(
       width: MediaQuery.of(context).size.width * .5,
@@ -131,10 +168,10 @@ Scaffold mobileView(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           MyCard(
-              name: 'migs',
+              name: name,
               pic:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnYz_yN68eGjMSQ5pbum94YUpIPPvJOp4XTg&usqp=CAU",
-              loc: "Davao"),
+                  pic,
+              loc: loc),
           SizedBox(
             height: 150,
           ),
@@ -167,8 +204,9 @@ Scaffold mobileView(BuildContext context) {
         Builder(
             builder: (context) => IconButton(
                 onPressed: () => Scaffold.of(context).openEndDrawer(),
-                icon:
-                    Icon(FontAwesomeIcons.userAstronaut, color: Colors.white))),
+                icon: CircleAvatar(foregroundImage: NetworkImage(pic))
+                    )
+                    )
       ],
     ),
     drawer: MySidebar(side: 1),

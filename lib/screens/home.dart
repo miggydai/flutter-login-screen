@@ -30,6 +30,7 @@ class _MyHomeState extends State<MyHome> {
   double len = 0;
   String meal = "";
   List data = [];
+  String smolpic = "";
 
   @override
   void initState() {
@@ -48,16 +49,6 @@ class _MyHomeState extends State<MyHome> {
       });
     });
     getFood();
-
-    // getFood().then((value) {
-    //   var data = jsonDecode(value.body);
-    //   print(data['meals'][0]['strMeal']);
-
-    //   setState(() {
-    //     len = data["meals"].length;
-    //     meal = data['meals'][0]['strMeal'];
-    //   });
-    // });
   }
 
   Future<Response> getRandomData() async {
@@ -80,16 +71,16 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: fullName != null
+        body: fullName != ""
             ? LayoutBuilder(
                 builder: (BuildContext, BoxConstraints constraints) {
                 if (constraints.maxWidth > 600) {
                   return WebView(context, fullName, picture, loc, data);
                 } else {
-                  return mobileView(context, fullName, picture, loc);
+                  return mobileView(context, fullName, picture, loc, data);
                 }
               })
-            : Text("oh no"));
+            : Center(child: CircularProgressIndicator()));
   }
 }
 
@@ -109,7 +100,7 @@ Scaffold WebView(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Wrap(children: [
-              MyCard(name: name != null ? name : 'bogo', pic: pic, loc: loc)
+              MyCard(name: name != null ? name : 'no name', pic: pic, loc: loc)
             ]),
             SizedBox(
               height: 150,
@@ -147,28 +138,40 @@ Scaffold WebView(
         children: [
           Container(child: MySidebar(side: 2)),
           Container(
-              width: MediaQuery.of(context).size.width * .2,
+              width: MediaQuery.of(context).size.width * .5,
               height: MediaQuery.of(context).size.height,
               child: data != null
-                  ? ListView.builder(
-                      itemCount: data.length,
-                      itemBuilder: ((context, index) {
-                        return ProdCard(name: data[index]['strMeal']);
-                      }))
+                  ? Container(
+                      padding: EdgeInsets.all(8.0),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Wrap(
+                          spacing: 8.0,
+                          runSpacing: 8.0,
+                          children: List.generate(data.length, ((index) {
+                            return ProdCard(
+                              name: data[index]['strMeal'],
+                              pic: data[index]['strMealThumb'],
+                            );
+                          })),
+                        ),
+                      ),
+                    )
                   : Center(
                       child: CircularProgressIndicator(),
                     )),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Builder(
-              builder: (context) => FloatingActionButton(
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-                backgroundColor: primaryColor,
-                child: Icon(FontAwesomeIcons.userAstronaut,
-                    color: backgroundColor),
-              ),
-            ),
-          ),
+            child: Material(
+                elevation: 70,
+                borderRadius: BorderRadius.circular(15),
+                child: Builder(
+                    builder: (context) => IconButton(
+                        onPressed: () => Scaffold.of(context).openEndDrawer(),
+                        icon: CircleAvatar(
+                          foregroundImage: NetworkImage(pic),
+                        )))),
+          )
 
           // Your app screen body
         ],
@@ -178,69 +181,66 @@ Scaffold WebView(
 }
 
 //==================================================================Mobile View============================================================
-Scaffold mobileView(BuildContext context, String name, String pic, String loc) {
+Scaffold mobileView(
+    BuildContext context, String name, String pic, String loc, List data) {
   return Scaffold(
-    endDrawer: Container(
-      width: MediaQuery.of(context).size.width * .5,
-      height: MediaQuery.of(context).size.height,
-      color: Colors.blue[50],
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Wrap(children: [MyCard(name: name, pic: pic, loc: loc)]),
-            SizedBox(
-              height: 150,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Align(
-                    alignment: Alignment.bottomCenter,
-                    child: MyLogo(
-                        color: Colors.red,
-                        logo: FontAwesomeIcons.doorOpen,
-                        route: "/")),
-                Padding(
-                  padding: const EdgeInsets.only(left: 2),
-                  child: Align(
+      endDrawer: Container(
+        width: MediaQuery.of(context).size.width * .5,
+        height: MediaQuery.of(context).size.height,
+        color: Colors.blue[50],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Wrap(children: [MyCard(name: name, pic: pic, loc: loc)]),
+              SizedBox(
+                height: 150,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Align(
                       alignment: Alignment.bottomCenter,
                       child: MyLogo(
-                          color: Colors.blueGrey,
-                          logo: FontAwesomeIcons.discord,
-                          route: "")),
-                ),
-              ],
-            ),
-          ],
+                          color: Colors.red,
+                          logo: FontAwesomeIcons.doorOpen,
+                          route: "/")),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 2),
+                    child: Align(
+                        alignment: Alignment.bottomCenter,
+                        child: MyLogo(
+                            color: Colors.blueGrey,
+                            logo: FontAwesomeIcons.discord,
+                            route: "")),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
-    ),
-    appBar: AppBar(
-      backgroundColor: primaryColor,
-      actions: [
-        Builder(
-            builder: (context) => IconButton(
-                onPressed: () => Scaffold.of(context).openEndDrawer(),
-                icon:
-                    Icon(FontAwesomeIcons.userAstronaut, color: Colors.white))),
-      ],
-    ),
-    drawer: MySidebar(side: 2),
-    body: Container(
-      width: MediaQuery.of(context).size.width,
-      color: backgroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child:
-                Icon(FontAwesomeIcons.airbnb, size: 100, color: primaryColor),
-          ),
+      appBar: AppBar(
+        backgroundColor: primaryColor,
+        actions: [
+          Builder(
+              builder: (context) => IconButton(
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
+                  icon: CircleAvatar(foregroundImage: NetworkImage(pic)))),
         ],
       ),
-    ),
-  );
+      drawer: MySidebar(side: 2),
+      body: data != null
+          ? ListView.builder(
+              itemCount: data.length,
+              itemBuilder: ((context, index) {
+                return ProdCard(
+                  name: data[index]['strMeal'],
+                  pic: data[index]['strMealThumb'],
+                );
+              }))
+          : Center(
+              child: CircularProgressIndicator(),
+            ));
 }
