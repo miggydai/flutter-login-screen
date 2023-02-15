@@ -147,7 +147,7 @@ Scaffold WebView(
         children: [
           Container(child: MySidebar(side: 2)),
           Container(
-              width: MediaQuery.of(context).size.width * .6,
+              width: MediaQuery.of(context).size.width * .2,
               height: MediaQuery.of(context).size.height,
               child: data != null
                   ? ListView.builder(
