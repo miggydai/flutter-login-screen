@@ -101,8 +101,7 @@ class MyCard extends StatelessWidget {
             side: MaterialStateProperty.all(BorderSide(
                 color: Color(0xFF03bfcb),
                 width: 1.0,
-                style: BorderStyle.solid,
-                strokeAlign: StrokeAlign.inside)),
+                style: BorderStyle.solid,)),
             padding: MaterialStateProperty.all(
                 const EdgeInsets.symmetric(horizontal: 18, vertical: 20)),
             backgroundColor:
@@ -127,8 +126,7 @@ class MyCard extends StatelessWidget {
           side: MaterialStateProperty.all(BorderSide(
               color: Color.fromRGBO(152, 177, 203, 1),
               width: 0.5,
-              style: BorderStyle.solid,
-              strokeAlign: StrokeAlign.inside)),
+              style: BorderStyle.solid,)),
           padding: MaterialStateProperty.all(
               const EdgeInsets.symmetric(horizontal: 10, vertical: 10)),
           backgroundColor:

@@ -36,8 +36,7 @@ class MyButton extends StatelessWidget {
               side: MaterialStateProperty.all(BorderSide(
                   color: Color.fromRGBO(107, 137, 232, 1),
                   width: .5,
-                  style: BorderStyle.solid,
-                  strokeAlign: StrokeAlign.inside)),
+                  style: BorderStyle.solid,)),
               padding: MaterialStateProperty.all(
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 20)),
               overlayColor:

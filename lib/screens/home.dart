@@ -133,7 +133,7 @@ Scaffold WebView(
       width: MediaQuery.of(context).size.width,
       color: backgroundColor,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(child: MySidebar(side: 2)),
