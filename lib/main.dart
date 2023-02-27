@@ -7,6 +7,7 @@ import 'package:flutter_login/screens/about.dart';
 import 'package:flutter_login/screens/home.dart';
 import 'package:flutter_login/screens/signin.dart';
 import 'package:flutter_login/screens/signup.dart';
+import 'package:flutter_login/screens/test.dart';
 import 'package:flutter_login/widgets/button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:flutter_login/widgets/textfield.dart';
@@ -19,6 +20,7 @@ void main() => runApp(MaterialApp(
         '/SignUp': (context) => SignUp(),
         '/Home': (context) => MyHome(),
         '/About': (context) => AboutPage(),
+        '/Test': (context) => TestWidget()
       },
     ));
 

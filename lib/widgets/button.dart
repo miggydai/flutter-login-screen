@@ -34,10 +34,10 @@ class MyButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(40.0),
               )),
               side: MaterialStateProperty.all(BorderSide(
-                  color: Color.fromRGBO(107, 137, 232, 1),
-                  width: .5,
-                  style: BorderStyle.solid,
-                  strokeAlign: StrokeAlign.inside)),
+                color: Color.fromRGBO(107, 137, 232, 1),
+                width: .5,
+                style: BorderStyle.solid,
+              )),
               padding: MaterialStateProperty.all(
                   const EdgeInsets.symmetric(horizontal: 100, vertical: 20)),
               overlayColor:

@@ -31,6 +31,7 @@ class _MyHomeState extends State<MyHome> {
   String meal = "";
   List data = [];
   String smolpic = "";
+  List<dynamic> games = [];
 
   @override
   void initState() {
@@ -48,7 +49,7 @@ class _MyHomeState extends State<MyHome> {
         loc = jsonData['results'][0]['location']['country']; //get coutry
       });
     });
-    getFood();
+    fetchGames();
   }
 
   Future<Response> getRandomData() async {
@@ -56,15 +57,15 @@ class _MyHomeState extends State<MyHome> {
     return response;
   }
 
-  void getFood() async {
-    Response response = await get(Uri.parse(
-        'https://www.themealdb.com/api/json/v1/1/filter.php?a=Indian'));
+  Future<void> fetchGames() async {
+    final response = await get(
+        Uri.parse('https://www.freetogame.com/api/games?platform=pc'));
     if (response.statusCode == 200) {
       setState(() {
-        data = json.decode(response.body)["meals"];
+        games = json.decode(response.body) as List<dynamic>;
       });
     } else {
-      throw Exception("Failed to Load");
+      throw Exception('Failed to fetch games');
     }
   }
 
@@ -75,7 +76,7 @@ class _MyHomeState extends State<MyHome> {
             ? LayoutBuilder(
                 builder: (BuildContext, BoxConstraints constraints) {
                 if (constraints.maxWidth > 600) {
-                  return WebView(context, fullName, picture, loc, data);
+                  return WebView(context, fullName, picture, loc, games);
                 } else {
                   return mobileView(context, fullName, picture, loc, data);
                 }
@@ -86,7 +87,7 @@ class _MyHomeState extends State<MyHome> {
 
 //=============================================Web View==========================================================
 Scaffold WebView(
-    BuildContext context, String name, String pic, String loc, List data) {
+    BuildContext context, String name, String pic, String loc, List games) {
   return Scaffold(
     floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     endDrawer: Container(
@@ -140,7 +141,7 @@ Scaffold WebView(
           Container(
               width: MediaQuery.of(context).size.width * .5,
               height: MediaQuery.of(context).size.height,
-              child: data != null
+              child: games != null
                   ? Container(
                       padding: EdgeInsets.all(8.0),
                       child: SingleChildScrollView(
@@ -148,12 +149,11 @@ Scaffold WebView(
                         child: Wrap(
                           spacing: 8.0,
                           runSpacing: 8.0,
-                          children: List.generate(data.length, ((index) {
-                            return ProdCard(
-                              name: data[index]['strMeal'],
-                              pic: data[index]['strMealThumb'],
-                            );
-                          })),
+                          children: games
+                              .take(20)
+                              .map((game) => ProdCard(
+                                  name: game["title"], pic: game['thumbnail']))
+                              .toList(),
                         ),
                       ),
                     )

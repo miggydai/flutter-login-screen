@@ -85,69 +85,69 @@ Scaffold WebView(BuildContext context) {
             width: MediaQuery.of(context).size.width * .5,
             height: MediaQuery.of(context).size.height,
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child:  Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(FontAwesomeIcons.airbnb,
-                      size: 100, color: Color.fromRGBO(107, 137, 232, 1)),
-                  SizedBox(
-                    height: 50,
-                  ),
-                  TField(text: "Email", ob: false, s: .3),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      StField(text: "Firstname", ob: false, s: 200),
-                      StField(text: "Lastname", ob: false, s: 200),
-                    ],
-                  ),
-                  TField(text: "Username", ob: false, s: .3),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      StField(text: "Pasword", ob: true, s: 200),
-                      StField(text: "Confirm Password", ob: true, s: 200),
-                    ],
-                  ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(FontAwesomeIcons.airbnb,
+                    size: 100, color: Color.fromRGBO(107, 137, 232, 1)),
+                SizedBox(
+                  height: 50,
+                ),
+                TField(text: "Email", ob: false, s: .3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    StField(text: "Firstname", ob: false, s: 200),
+                    StField(text: "Lastname", ob: false, s: 200),
+                  ],
+                ),
+                TField(text: "Username", ob: false, s: .3),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    StField(text: "Pasword", ob: true, s: 200),
+                    StField(text: "Confirm Password", ob: true, s: 200),
+                  ],
+                ),
 
-                  MyButton(title: "Sign Up", route: "/SignUp"),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  TextButton(onPressed: () {}, child: Text("Forgot Password?")),
-                  SizedBox(height: 15),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MyLogo(
-                          color: Colors.blue,
-                          logo: FontAwesomeIcons.facebook,
-                          route: ''),
-                      SizedBox(
-                        width: 25,
-                      ),
-                      MyLogo(
-                          color: Colors.pink,
-                          logo: FontAwesomeIcons.google,
-                          route: '/Home'),
-                      SizedBox(
-                        width: 25,
-                      ),
-                      MyLogo(
-                          color: Colors.blue,
-                          logo: FontAwesomeIcons.twitter,
-                          route: '')
-                    ],
-                  ),
-                  // SizedBox(height: 100,),
-                  //bottom
-                  Container(
-                    height: 50,
-                  ),
-                  MyButton(title: "Sign In", route: "./SignIn"),
-                ],
-              ),
+                MyButton(title: "Sign Up", route: "/SignUp"),
+                SizedBox(
+                  height: 15,
+                ),
+                TextButton(onPressed: () {}, child: Text("Forgot Password?")),
+                SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MyLogo(
+                        color: Colors.blue,
+                        logo: FontAwesomeIcons.facebook,
+                        route: '/Test'),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    MyLogo(
+                        color: Colors.pink,
+                        logo: FontAwesomeIcons.google,
+                        route: '/Home'),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    MyLogo(
+                        color: Colors.blue,
+                        logo: FontAwesomeIcons.twitter,
+                        route: '')
+                  ],
+                ),
+                // SizedBox(height: 100,),
+                //bottom
+                Container(
+                  height: 50,
+                ),
+                MyButton(title: "Sign In", route: "./SignIn"),
+              ],
             ),
+          ),
         ],
       ),
     ),
